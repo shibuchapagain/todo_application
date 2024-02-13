@@ -1,0 +1,90 @@
+## Todo Application
+
+Description: This project focuses on CRUD operations for managing TODOs.
+
+## Table of Contents:
+
+- Project Title: TODO-Application
+
+- Installation
+
+  - Run "npm install" to install node packages.
+  - Use .env.example as a reference for creating a .env file.
+  - Execute "npm run dev" to start the development server.
+  - After this, todo-task database auto creates.
+
+- Usages
+- Technologies
+  - TypeScript
+  - body-parser: For parsing body data.
+  - bunyan: Logger for recording API logs.
+  - cors: Cross-origin resource sharing.
+  - date-fns: Date manipulation.
+  - dotenv: Loading environment variables from a file.
+  - express: Web framework for Node.js.
+  - mongoose: MongoDB database integration.
+  - morgan: HTTP request logger.
+  - zod: Data validation.
+
+## Folder Structure
+
+- logger: Log files directory
+- src
+  - backend
+  - entity: TODO model
+  - config: Database setup
+  - log: API logs
+  - middleware
+    - Body validators: Validate body data
+    - Params validators: Validate params
+    - Query validators: Validate query filters
+  - modules
+  - todos
+    - dto: Data transfer objects for validation
+    - controller: Logic for TODO operations
+    - service: Business logic
+  - utils
+    - api: API response utility
+    - helpers
+    - pagination dto: Pagination data transfer object
+    - types: Type definitions
+  - app
+    - router
+    - server
+
+## API Endpoints
+
+- Base URL: http://localhost:3000/api/todo/
+
+### Create New TODO
+
+- Endpoint: /add
+- Method: POST
+- Body: `title(string), description(string), date(dd/mm/yyyy), time(hh:mm:AM/PM)`
+
+### Update TODO
+
+- Endpoint: /update/:todoId
+- Method: PATCH
+- Body: `title(string), description(string), date(dd/mm/yyyy), time(hh:mm:AM/PM)`
+
+### Delete TODO
+
+- Endpoint: /delete/:todoId
+- Method: DELETE
+
+### Get All TODOs
+
+- Endpoint: /
+- Query for filters: /?status= "done" / "upcoming"
+- Pagination: (pageSize: number, page: number)
+
+## Thank you!
+
+## Contact info:
+
+## Name: Shiva Chapagain
+
+## email: shibuchapagain12@gmail.com
+
+## Due to short period of time, Iam unable to implement template engine in this project, Iam extremely sorry for that. In here iam fully focus on apis, not on template engine. If i need to implement template engine, then i would prefer ejs, because it is easy to use and can code javascript in it.
