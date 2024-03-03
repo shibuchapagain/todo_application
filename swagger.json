@@ -1,0 +1,192 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Todo API Documentation",
+    "description": "API documentation for user registration and login",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/register": {
+      "post": {
+        "summary": "Register a new user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "type": "string",
+                    "description": "User's first name",
+                    "example": "John"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "description": "User's last name",
+                    "example": "Doe"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User's email address",
+                    "example": "john.doe@example.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "User's password",
+                    "example": "password123"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User registered successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": true,
+                  "message": "User register successfully",
+                  "data": {
+                    "id": 1,
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "email": "john.doe@example.com"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": "false,",
+                  "message": "User already exist"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": "false,",
+                  "message": "User doesn't exist"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entities",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": "false,",
+                  "message": "Validation failed",
+                  "errors": [
+                    {
+                      "field": "firstName",
+                      "required_message": "First name is required",
+                      "invalid_type_message": "First name should be string"
+                    },
+                    {
+                      "field": "email",
+                      "message": "Email is required and must be a valid email address"
+                    },
+                    {
+                      "field": "password",
+                      "message": "Password is required"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/login": {
+      "post": {
+        "summary": "Authenticate a user and obtain a token",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User's email address",
+                    "example": "john.doe@example.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "User's password",
+                    "example": "password123"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User authenticated successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": "true,",
+                  "message": "Login successfully,",
+                  "data": {
+                    "accessToken": "78538578735873,",
+                    "refreshToken": "fhjrfdgud868768,"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Authentication failed",
+                  "error": "Invalid credentials"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Authentication failed",
+                  "error": "Invalid email or password"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Email is not valid"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
