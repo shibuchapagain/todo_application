@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 require("dotenv").config();
 
 //
-const MONGO_URL = process.env.MONGO_URL!;
+const MONGO_URL = process.env.MONGO_URL ?? "";
 
 // DB CONNECTION
 mongoose
