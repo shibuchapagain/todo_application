@@ -1,11 +1,12 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 require("dotenv").config();
 
 //
+const MONGO_URL = process.env.MONGO_URL!;
+
+// DB CONNECTION
 mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  .connect(MONGO_URL, {
     connectTimeoutMS: 30000,
     socketTimeoutMS: 60000,
   })

@@ -1,0 +1,20 @@
+version: "3"
+services:
+  app:
+    build: .
+    ports:
+      - "7000:7000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/todo-task
+
+  mongo:
+    image: mongo:4.4
+    ports:
+      - "27025:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
