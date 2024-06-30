@@ -37,6 +37,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // routes
 app.use("/api", appRouter);
 
+app.get("/", (_req, res) => {
+  return res.json({
+    success: true,
+    message:
+      "Hi, iam shibu chapagain, This is the todo-application, you can use this api for learning purposes. Your data is save in shibu mongoose database. Thanks!",
+  });
+});
+
 // Error Handler
 app.use(
   (error: CustomError, _req: Request, res: Response, _next: NextFunction) => {

@@ -2,15 +2,19 @@
   "name": "todo_task",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/app.js",
   "scripts": {
     "start": "node dist/app.js",
     "dev": "nodemon src/app.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "postinstall": "npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "20.x"
+  },
   "devDependencies": {
     "@types/body-parser": "^1.19.5",
     "@types/bunyan": "^1.8.11",
